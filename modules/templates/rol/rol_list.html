@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<table border="10">
+{% for i in data %}
+
+	<tr>
+		<td>{{ i.rol }}</td>
+		<td>{{ i.user_id }}</td>
+    <td>{{ i.project_id }}</td>
+		<td>
+			<a href="{% url 'update_rol' i.id %}">Edit</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_rol' i.id %}">Delete</a>
+		</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_rol' %}">register new rol</a>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<table border="10">
+{% for i in data %}
+
+	<tr>
+		<td>{{ i.percent }}</td>
+		<td>{{ i.state }}</td>
+		<td>{{ i.hours }}</td>
+		<td>{{ i.project_id }}</td>
+		<td>{{ i.user_in_charge }}</td>
+		<td>{{ i.user_supervisor }}</td>
+		<td>
+			<a href="{% url 'update_rol' i.id %}">Edit</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_rol' i.id %}">Delete</a>
+		</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_task' %}">register new task</a>
+
+{% endblock %}

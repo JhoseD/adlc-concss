@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<table border="10">
+{% for i in data %}
+
+	<tr>
+		<td>{{ i.name }}</td>
+		<td>{{ i.percent }} %</td>
+		<td>
+			<a href="{% url 'view_project_derivated' i.id %}">View</a>
+		</td>
+		<td>
+			<a href="{% url 'update_project_derivated' i.id %}">Edit</a>
+		</td>
+		<td>
+			<a href="{% url 'delete_project_derivated' i.id %}">Delete</a>
+		</td>
+	</tr>
+
+{% endfor %}
+</table>
+
+<a href="{% url 'create_project' %}">register new project</a>
+
+{% endblock %}
