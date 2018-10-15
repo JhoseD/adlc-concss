@@ -8,9 +8,6 @@ from .views import list_error, create_error, update_error, delete_error
 from .views import list_comment, create_comment, update_comment, delete_comment
 from .views import list_rol, create_rol, update_rol, delete_rol
 
-# in development
-from .views import list_project_derivated, create_project_derivated, update_project_derivated, delete_project_derivated, view_project_derivated
-
 urlpatterns = [
     path('', index, name = 'index'),
 
@@ -48,11 +45,4 @@ urlpatterns = [
     path('create_rol', create_rol, name = 'create_rol'),
     path('update_rol/<int:id>/', update_rol, name = 'update_rol'),
     path('delete_rol/<int:id>/', delete_rol, name = 'delete_rol'),
-
-    # in development
-    path('list_project_derivated', list_project_derivated, name = 'list_project_derivated'),
-    path('create_project_derivated', create_project_derivated, name = 'create_project_derivated'),
-    path('update_project_derivated/<int:id>/', update_project_derivated, name = 'update_project_derivated'),
-    path('delete_project_derivated/<int:id>/', delete_project_derivated, name = 'delete_project_derivated'),
-    path('view_project_derivated/<int:id>/', view_project_derivated, name = 'view_project_derivated'),
 ]

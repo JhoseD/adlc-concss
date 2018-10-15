@@ -38,6 +38,15 @@ def delete_client(request, id):
         data.delete()
         return redirect('list_client')
     return render(request, 'delete_confirm.html')
+
+# client projects
+def view_client(request, id):
+    data = client.objects.filter(id = id)
+    return render(request, '.html', {'data': data})
+
+def client_projects(request, id):
+    data = projects.objects.filter(id = id)
+    return render(request, '.html', {'data': data})
 # end client
 
 
@@ -249,43 +258,3 @@ def delete_rol(request, id):
         return redirect('list_rol')
     return render(request, 'delete_confirm.html')
 # end rol
-
-
-# project_derivated
-def list_project_derivated(request):
-	data = project.objects.all()
-	return render(request, 'project_derivated/project_list.html', {'data': data})
-
-
-def create_project_derivated(request):
-	if request.method == 'POST':
-		form = project_form(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect('list_project_derivated')
-	else:
-		form = project_derivated_form()
-		return render(request, 'project_derivated/project.html', {'form': form})
-
-
-def update_project_derivated(request, id):
-    data = project.objects.get(id = id)
-    form = project_form(request.POST or None, instance = data)
-    if form.is_valid():
-        form.save()
-        return redirect('list_project_derivated')
-    return render(request, 'project_derivated/project.html', {'form': form, 'data': data})
-
-
-def delete_project_derivated(request, id):
-    data = project.objects.get(id = id)
-    if(request.method == 'POST'):
-        data.delete()
-        return redirect('list_project_derivated')
-    return render(request, 'delete_confirm.html')
-
-
-def view_project_derivated(request, id):
-    data = project.objects.get(id = id)
-    return render(request, 'project_derivated/view.html', {'data': data})
-# end project_derivated
