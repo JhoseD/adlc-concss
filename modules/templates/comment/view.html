@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div>
+	<ul>
+    <li>{{ data.title }}</li>
+		<li>{{ data.comment }} </li>
+		<li>{{ data.task_id }}</li>
+	</ul>
+</div>
+
+<a href="{% url 'update_comment' data.id %}">Edit</a>
+<a href="{% url 'delete_comment' data.id %}">Delete</a>
+
+{% endblock %}

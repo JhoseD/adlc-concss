@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div>
+	<ul>
+    <li>{{ data.name }}</li>
+		<li>{{ data.percent }} %</li>
+		<li>{{ data.file }}</li>
+		<li>{{ data.created_at }}</li>
+		<li>{{ data.client_id }}</li>
+	</ul>
+</div>
+
+<a href="{% url 'create_requirement' %}">New requirement</a>
+<a href="{% url 'create_task' %}">New task</a>
+<a href="{% url 'create_rol' %}">New rol</a>
+<br>
+<a href="{% url 'project_rols' data.id %}">Project rols</a>
+<a href="{% url 'project_tasks' data.id %}">Project tasks</a>
+<a href="{% url 'project_requirements' data.id %}">Project requirements</a>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div>
+	<ul>
+		<li>{{ data.title }} </li>
+		<li>{{ data.percent }} %</li>
+		<li>{{ data.state }}</li>
+		<li>{{ data.hours }}</li>
+		<li>{{ data.project_id }}</li>
+		<li>{{ data.user_in_charge }}</li>
+		<li>{{ data.user_supervisor }}</li>
+	</ul>
+</div>
+
+<a href="{% url 'update_rol' data.id %}">Edit</a>
+<a href="{% url 'delete_rol' data.id %}">Delete</a>
+<br>
+<a href="{% url 'task_comments' data.id %}">Task comments</a>
+<a href="{% url 'task_errors' data.id %}">Task errors</a>
+
+{% endblock %}

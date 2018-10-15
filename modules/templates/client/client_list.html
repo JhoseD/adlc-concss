@@ -11,6 +11,9 @@
     <td>{{ i.email }}</td>
 		<td>{{ i.address }}</td>
 		<td>
+			<a href="{% url 'view_client' i.id %}">View</a>
+		</td>
+		<td>
 			<a href="{% url 'update_client' i.id %}">Edit</a>
 		</td>
 		<td>

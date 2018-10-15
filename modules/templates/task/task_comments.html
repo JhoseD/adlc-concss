@@ -2,11 +2,24 @@
 
 {% block content %}
 
+<div>
+	<ul>
+		<li>{{ data_.title }}</li>
+    <li>{{ data_.percent }}</li>
+		<li>{{ data_.state }} %</li>
+		<li>{{ data_.hours }}</li>
+		<li>{{ data_.project_id }}</li>
+		<li>{{ data_.user_in_charge }}</li>
+		<li>{{ data_.user_supervisor }}</li>
+	</ul>
+</div>
+
 <table border="10">
 {% for i in data %}
 
 	<tr>
 		<td>{{ i.title }}</td>
+		<td>{{ i.comment }}</td>
 		<td>{{ i.task_id }}</td>
 		<td>
 			<a href="{% url 'view_comment' i.id %}">View</a>

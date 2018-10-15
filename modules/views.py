@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import client, project, requirement, task, rol, error, comment
 from .forms import client_form, project_form, requirement_form, task_form, rol_form, error_form, comment_form
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -39,14 +40,15 @@ def delete_client(request, id):
         return redirect('list_client')
     return render(request, 'delete_confirm.html')
 
-# client projects
 def view_client(request, id):
-    data = client.objects.filter(id = id)
-    return render(request, '.html', {'data': data})
+    data = client.objects.get(id = id)
+    return render(request, 'client/view.html', {'data': data})
 
+# client projects
 def client_projects(request, id):
-    data = projects.objects.filter(id = id)
-    return render(request, '.html', {'data': data})
+    data_ = client.objects.get(id = id)
+    data = project.objects.filter(client_id = id)
+    return render(request, 'client/client_projects.html', {'data_': data_,'data': data})
 # end client
 
 
@@ -82,6 +84,26 @@ def delete_project(request, id):
         data.delete()
         return redirect('list_project')
     return render(request, 'delete_confirm.html')
+
+def view_project(request, id):
+    data = project.objects.get(id = id)
+    return render(request, 'project/view.html', {'data': data})
+
+# project relations list
+def project_rols(request, id):
+    data_ = project.objects.get(id = id)
+    data = rol.objects.filter(project_id = id)
+    return render(request, 'project/project_rols.html', {'data_': data_,'data': data})
+
+def project_requirements(request, id):
+    data_ = project.objects.get(id = id)
+    data = requirement.objects.filter(project_id = id)
+    return render(request, 'project/project_requirements.html', {'data_': data_,'data': data})
+
+def project_tasks(request, id):
+    data_ = project.objects.get(id = id)
+    data = task.objects.filter(project_id = id)
+    return render(request, 'project/project_tasks.html', {'data_': data_,'data': data})
 # end project
 
 
@@ -117,6 +139,10 @@ def delete_requirement(request, id):
         data.delete()
         return redirect('list_requirement')
     return render(request, 'delete_confirm.html')
+
+def view_requirement(request, id):
+    data = requirement.objects.get(id = id)
+    return render(request, 'requirement/view.html', {'data': data})
 # end requirement
 
 
@@ -152,6 +178,21 @@ def delete_task(request, id):
         data.delete()
         return redirect('list_task')
     return render(request, 'delete_confirm.html')
+
+def view_task(request, id):
+    data = task.objects.get(id = id)
+    return render(request, 'task/view.html', {'data': data})
+
+# task relations list
+def task_comments(request, id):
+    data_ = task.objects.get(id = id)
+    data = comment.objects.filter(task_id = id)
+    return render(request, 'task/task_comments.html', {'data_': data_,'data': data})
+
+def task_errors(request, id):
+    data_ = task.objects.get(id = id)
+    data = error.objects.filter(task_id = id)
+    return render(request, 'task/task_errors.html', {'data_': data_,'data': data})
 # end task
 
 
@@ -187,6 +228,10 @@ def delete_error(request, id):
         data.delete()
         return redirect('list_error')
     return render(request, 'delete_confirm.html')
+
+def view_error(request, id):
+    data = error.objects.get(id = id)
+    return render(request, 'error/view.html', {'data': data})
 # end error
 
 
@@ -222,6 +267,10 @@ def delete_comment(request, id):
         data.delete()
         return redirect('list_comment')
     return render(request, 'delete_confirm.html')
+
+def view_comment(request, id):
+    data = comment.objects.get(id = id)
+    return render(request, 'comment/view.html', {'data': data})
 # end comment
 
 
@@ -257,4 +306,8 @@ def delete_rol(request, id):
         data.delete()
         return redirect('list_rol')
     return render(request, 'delete_confirm.html')
+
+def view_rol(request, id):
+    data = rol.objects.get(id = id)
+    return render(request, 'rol/view.html', {'data': data})
 # end rol

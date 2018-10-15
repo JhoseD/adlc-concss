@@ -2,11 +2,20 @@
 
 {% block content %}
 
+<div>
+	<ul>
+    <li>{{ data_.name }}</li>
+		<li>{{ data_.percent }} %</li>
+		<li>{{ data_.file }}</li>
+		<li>{{ data_.created_at }}</li>
+		<li>{{ data_.client_id }}</li>
+	</ul>
+</div>
+
 <table border="10">
 {% for i in data %}
 
 	<tr>
-		<td>{{ i.title }}</td>
 		<td>{{ i.percent }}</td>
 		<td>{{ i.state }}</td>
 		<td>{{ i.hours }}</td>

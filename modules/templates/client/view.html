@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div>
+	<ul>
+    <li>{{ data.name }}</li>
+		<li>{{ data.telephone }} </li>
+		<li>{{ data.email }}</li>
+		<li>{{ data.address }}</li>
+	</ul>
+</div>
+
+<a href="{% url 'update_client' data.id %}">Edit</a>
+<a href="{% url 'delete_client' data.id %}">Delete</a>
+<a href="{% url 'client_projects' data.id %}">View client projects</a>
+
+{% endblock %}
