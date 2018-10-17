@@ -3,7 +3,7 @@ from .views import index
 from .views import list_client, create_client, update_client, delete_client, view_client, client_projects
 from .views import list_project, create_project, update_project, delete_project, view_project, project_rols, project_tasks, project_requirements
 from .views import list_requirement, create_requirement, update_requirement, delete_requirement, view_requirement
-from .views import list_task, create_task, update_task, delete_task, view_task, task_comments, task_errors
+from .views import list_task, create_task, update_task, delete_task, view_task, task_comments, task_errors, list_task_not_started, list_task_in_process, list_task_finished
 from .views import list_error, create_error, update_error, delete_error, view_error
 from .views import list_comment, create_comment, update_comment, delete_comment, view_comment
 from .views import list_rol, create_rol, update_rol, delete_rol, view_rol
@@ -19,7 +19,6 @@ urlpatterns = [
     path('client_projects/<int:id>/', client_projects, name = 'client_projects'),
 
 
-
     path('list_project', list_project, name = 'list_project'),
     path('create_project', create_project, name = 'create_project'),
     path('update_project/<int:id>/', update_project, name = 'update_project'),
@@ -28,7 +27,6 @@ urlpatterns = [
     path('project_rols/<int:id>/', project_rols, name = 'project_rols'),
     path('project_tasks/<int:id>/', project_tasks, name = 'project_tasks'),
     path('project_requirements/<int:id>/', project_requirements, name = 'project_requirements'),
-
 
 
     path('list_requirement', list_requirement, name = 'list_requirement'),
@@ -45,7 +43,9 @@ urlpatterns = [
     path('view_task/<int:id>/', view_task, name = 'view_task'),
     path('task_comments/<int:id>/', task_comments, name = 'task_comments'),
     path('task_errors/<int:id>/', task_errors, name = 'task_errors'),
-
+    path('list_task_not_started/<int:id>/', list_task_not_started, name = 'list_task_not_started'),
+    path('list_task_in_process/<int:id>/', list_task_in_process, name = 'list_task_in_process'),
+    path('list_task_finished/<int:id>/', list_task_finished, name = 'list_task_finished'),
 
 
     path('list_error', list_error, name = 'list_error'),

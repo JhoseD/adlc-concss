@@ -4,7 +4,7 @@
 
 <div>
 	<ul>
-    <li>{{ data_.name }}</li>
+    	<li>{{ data_.name }}</li>
 		<li>{{ data_.percent }} %</li>
 		<li>{{ data_.file }}</li>
 		<li>{{ data_.created_at }}</li>
@@ -23,17 +23,47 @@
 		<td>
 			<a href="{% url 'view_requirement' i.id %}">View</a>
 		</td>
-		<td>
-			<a href="{% url 'update_requirement' i.id %}">Edit</a>
-		</td>
-		<td>
-			<a href="{% url 'delete_requirement' i.id %}">Delete</a>
-		</td>
+
+{% for r in rol_ %}
+
+	{% if user == r.user_id %}
+		
+		{% if r.rol == 'Scrum Master' %}
+
+			{% if r.project_id == data_ %}
+			<td>
+				<a href="{% url 'update_requirement' i.id %}">Edit</a>
+			</td>
+			<td>
+				<a href="{% url 'delete_requirement' i.id %}">Delete</a>
+			</td>
+			{% endif %}
+
+		{% endif %}
+
+	{% endif %}
+
+{% endfor %}
+
 	</tr>
 
 {% endfor %}
 </table>
 
-<a href="{% url 'create_requirement' %}">New requirement</a>
+{% for r in rol_ %}
+
+	{% if user == r.user_id %}
+		
+		{% if r.rol == 'Scrum Master' %}
+
+			{% if r.project_id == data_ %}
+				<a href="{% url 'create_requirement' %}">New requirement</a>
+			{% endif %}
+
+		{% endif %}
+
+	{% endif %}
+
+{% endfor %}
 
 {% endblock %}

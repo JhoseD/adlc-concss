@@ -8,7 +8,7 @@
 	<tr>
 		<td>{{ i.name }}</td>
 		<td>{{ i.telephone }}</td>
-    <td>{{ i.email }}</td>
+    	<td>{{ i.email }}</td>
 		<td>{{ i.address }}</td>
 		<td>
 			<a href="{% url 'view_client' i.id %}">View</a>
@@ -16,9 +16,11 @@
 		<td>
 			<a href="{% url 'update_client' i.id %}">Edit</a>
 		</td>
+		{% comment %}
 		<td>
 			<a href="{% url 'delete_client' i.id %}">Delete</a>
 		</td>
+		{% endcomment %}
 	</tr>
 
 {% endfor %}

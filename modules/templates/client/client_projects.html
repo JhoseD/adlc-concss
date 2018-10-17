@@ -4,8 +4,8 @@
 
 <div>
 	<ul>
-    <li>{{ data_.name }}</li>
-		<li>{{ data_.telephone }} %</li>
+    	<li>{{ data_.name }}</li>
+		<li>{{ data_.telephone }} </li>
 		<li>{{ data_.email }}</li>
 		<li>{{ data_.address }}</li>
 	</ul>
@@ -26,9 +26,11 @@
 		<td>
 			<a href="{% url 'update_project' i.id %}">Edit</a>
 		</td>
+		{% comment %}
 		<td>
 			<a href="{% url 'delete_project' i.id %}">Delete</a>
 		</td>
+		{% endcomment %}
 	</tr>
 
 {% endfor %}

@@ -4,13 +4,15 @@
 
 <div>
 	<ul>
-    <li>{{ data.rol }}</li>
+    	<li>{{ data.rol }}</li>
 		<li>{{ data.user_id }} </li>
 		<li>{{ data.project_id }}</li>
 	</ul>
 </div>
 
-<a href="{% url 'update_rol' i.id %}">Edit</a>
-<a href="{% url 'delete_rol' i.id %}">Delete</a>
+{% comment %}
+<a href="{% url 'update_rol' data.id %}">Edit</a>
+<a href="{% url 'delete_rol' data.id %}">Delete</a>
+{% endcomment %}
 
 {% endblock %}

@@ -4,7 +4,7 @@
 
 <div>
 	<ul>
-    <li>{{ data.name }}</li>
+    	<li>{{ data.name }}</li>
 		<li>{{ data.percent }} %</li>
 		<li>{{ data.file }}</li>
 		<li>{{ data.created_at }}</li>
@@ -12,12 +12,20 @@
 	</ul>
 </div>
 
+{% comment %}
 <a href="{% url 'create_requirement' %}">New requirement</a>
 <a href="{% url 'create_task' %}">New task</a>
 <a href="{% url 'create_rol' %}">New rol</a>
-<br>
+{% endcomment %}
+
 <a href="{% url 'project_rols' data.id %}">Project rols</a>
 <a href="{% url 'project_tasks' data.id %}">Project tasks</a>
 <a href="{% url 'project_requirements' data.id %}">Project requirements</a>
+
+<br>
+
+<a href="{% url 'list_task_not_started' data.id %}">Project tasks not started</a>
+<a href="{% url 'list_task_in_process' data.id %}">Project tasks in process</a>
+<a href="{% url 'list_task_finished' data.id %}">Project tasks finished</a>
 
 {% endblock %}

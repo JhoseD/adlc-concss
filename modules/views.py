@@ -98,12 +98,14 @@ def project_rols(request, id):
 def project_requirements(request, id):
     data_ = project.objects.get(id = id)
     data = requirement.objects.filter(project_id = id)
-    return render(request, 'project/project_requirements.html', {'data_': data_,'data': data})
+    rol_ = rol.objects.filter(project_id = id)
+    return render(request, 'project/project_requirements.html', {'data_': data_,'data': data, 'rol_': rol_})
 
 def project_tasks(request, id):
     data_ = project.objects.get(id = id)
     data = task.objects.filter(project_id = id)
-    return render(request, 'project/project_tasks.html', {'data_': data_,'data': data})
+    rol_ = rol.objects.filter(project_id = id)
+    return render(request, 'project/project_tasks.html', {'data_': data_,'data': data, 'rol_': rol_})
 # end project
 
 
@@ -151,6 +153,22 @@ def list_task(request):
 	data = task.objects.all()
 	return render(request, 'task/task_list.html', {'data': data})
 
+# tasks per state
+def list_task_not_started(request, id):
+    data_ = project.objects.get(id = id)
+    data = task.objects.filter(state = 'Not Started', project_id = id)
+    return render(request, 'project/project_tasks.html', {'data': data, 'data_': data_})
+
+def list_task_in_process(request, id):
+    data_ = project.objects.get(id = id)
+    data = task.objects.filter(state = 'In Process', project_id = id)
+    return render(request, 'project/project_tasks.html', {'data': data, 'data_': data_})
+
+def list_task_finished(request, id):
+    data_ = project.objects.get(id = id)
+    data = task.objects.filter(state = 'Finished', project_id = id)
+    return render(request, 'project/project_tasks.html', {'data': data, 'data_': data_})
+# tasks per state
 
 def create_task(request):
 	if request.method == 'POST':
@@ -254,7 +272,7 @@ def create_comment(request):
 
 def update_comment(request, id):
     data = comment.objects.get(id = id)
-    form = coment_form(request.POST or None, instance = data)
+    form = comment_form(request.POST or None, instance = data)
     if form.is_valid():
         form.save()
         return redirect('list_comment')

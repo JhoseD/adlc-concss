@@ -5,8 +5,8 @@
 <div>
 	<ul>
 		<li>{{ data_.title }}</li>
-    <li>{{ data_.percent }}</li>
-		<li>{{ data_.state }} %</li>
+    	<li>{{ data_.percent }} % </li>
+		<li>{{ data_.state }}</li>
 		<li>{{ data_.hours }}</li>
 		<li>{{ data_.project_id }}</li>
 		<li>{{ data_.user_in_charge }}</li>
@@ -24,12 +24,14 @@
 		<td>
 			<a href="{% url 'view_comment' i.id %}">View</a>
 		</td>
+		{% comment %}
 		<td>
 			<a href="{% url 'update_comment' i.id %}">Edit</a>
 		</td>
 		<td>
 			<a href="{% url 'delete_comment' i.id %}">Delete</a>
 		</td>
+		{% endcomment %}
 	</tr>
 
 {% endfor %}

@@ -29,7 +29,7 @@ class requirement(models.Model):
 	project_id = models.ForeignKey(project, on_delete = models.CASCADE)
 
 	def __str__(self):
-		return '%s %s %s' % (self.title)
+		return '%s' % (self.title)
 
 class task(models.Model):
     title = models.CharField(max_length = 50)
@@ -67,7 +67,7 @@ class rol(models.Model):
     user_id = models.ForeignKey(User, on_delete = models.CASCADE)
 
     def __str__(self):
-        return '%s %s %s' % (self.rols, self.project_id, self.user_rol)
+        return '%s %s %s' % (self.rol, self.project_id, self.user_id)
 
 class error(models.Model):
     title = models.CharField(max_length = 50)
@@ -92,7 +92,7 @@ class comment(models.Model):
     task_id = models.ForeignKey(task, on_delete = models.CASCADE)
 
     def __str__(self):
-        return '%s %s' % (self.title)
+        return '%s' % (self.title)
     # rsim 175
     # rsim 11 levanta 4g
     # depende del model del iphone if 4 rsim 10
