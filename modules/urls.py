@@ -8,8 +8,11 @@ from .views import list_error, create_error, update_error, delete_error, view_er
 from .views import list_comment, create_comment, update_comment, delete_comment, view_comment
 from .views import list_rol, create_rol, update_rol, delete_rol, view_rol
 
+from .views import LoginView, CrearUsuarioView, log_out
+
 urlpatterns = [
     path('', index, name = 'index'),
+    path('index', index, name = 'index'),
 
     path('list_client', list_client, name = 'list_client'),
     path('create_client', create_client, name = 'create_client'),
@@ -67,4 +70,8 @@ urlpatterns = [
     path('update_rol/<int:id>/', update_rol, name = 'update_rol'),
     path('delete_rol/<int:id>/', delete_rol, name = 'delete_rol'),
     path('view_rol/<int:id>/', view_rol, name = 'view_rol'),
+
+    path('login', LoginView.as_view(), name = 'login'),
+    path('logout', log_out, name = 'logout'),
+    path('signup', CrearUsuarioView.as_view(), name = 'signup'),
 ]
