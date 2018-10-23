@@ -1,18 +1,45 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
-
+{% block cont %}
+<h1>Proyecto</h1>
+<table>
+<thead>
+		<tr> 
+			
+			<th>Nombre</th>
+			<th>Porcentaje</th>
+			<th>archivo</th>
+			<th>Fecha de creacion</th>
+			<th>Cliente</th>
+		</tr>
+	</thead>
 <div>
-	<ul>
-    	<li>{{ data_.name }}</li>
-		<li>{{ data_.percent }} %</li>
-		<li>{{ data_.file }}</li>
-		<li>{{ data_.created_at }}</li>
-		<li>{{ data_.client_id }}</li>
-	</ul>
+	<thead>
+	<tr>
+    	<th>{{ data_.name }}</th>
+		<th>{{ data_.percent }} </th>
+		<th>{{ data_.file }}</th>
+		<th>{{ data_.created_at }}</th>
+		<th>{{ data_.client_id }}</th>
+	</tr>
+</thead>
 </div>
+</table>
+
+<h1>Requerimiento</h1>
 
 <table border="10">
+	<div>
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>Fecha de inicio</th>
+					<th>Fecha de finalizacion</th>
+					<th>Proyecto</th>
+				
+				</tr>
+			</thead>
 {% for i in data %}
 
 	<tr>
@@ -21,10 +48,10 @@
 		<td>{{ i.end_date }}</td>
 		<td>{{ i.project_id }}</td>
 		<td>
-			<a href="{% url 'view_requirement' i.id %}">View</a>
+			<a href="{% url 'view_requirement' i.id %}" class="button small">View</a>
 		</td>
 
-{% for r in rol_ %}
+			{% for r in rol_ %}
 
 	{% if user == r.user_id %}
 		
@@ -32,10 +59,10 @@
 
 			{% if r.project_id == data_ %}
 			<td>
-				<a href="{% url 'update_requirement' i.id %}">Edit</a>
+				<a href="{% url 'update_requirement' i.id %}" class="button small">Editar</a>
 			</td>
 			<td>
-				<a href="{% url 'delete_requirement' i.id %}">Delete</a>
+				<a href="{% url 'delete_requirement' i.id %}" class="button small">Eliminar</a>
 			</td>
 			{% endif %}
 
@@ -50,6 +77,7 @@
 {% endfor %}
 </table>
 
+<td>
 {% for r in rol_ %}
 
 	{% if user == r.user_id %}
@@ -57,7 +85,7 @@
 		{% if r.rol == 'Scrum Master' %}
 
 			{% if r.project_id == data_ %}
-				<a href="{% url 'create_requirement' %}">New requirement</a>
+				<a href="{% url 'create_requirement' %}" class="button special">Agregar Requerimiento</a>
 			{% endif %}
 
 		{% endif %}
@@ -67,3 +95,4 @@
 {% endfor %}
 
 {% endblock %}
+</td>

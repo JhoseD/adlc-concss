@@ -1,27 +1,37 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block cont %}
+
 
 <table border="10">
+
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>Tarea</th>
+					
+				</tr>
+			</thead>
 {% for i in data %}
 
 	<tr>
 		<td>{{ i.title }}</td>
 		<td>{{ i.task_id }}</td>
 		<td>
-			<a href="{% url 'view_comment' i.id %}">View</a>
+			<a href="{% url 'view_comment' i.id %}" class="button special">Detalle</a>
 		</td>
 		<td>
-			<a href="{% url 'update_comment' i.id %}">Edit</a>
+			<a href="{% url 'update_comment' i.id %}" class="button special">Editar</a>
 		</td>
 		<td>
-			<a href="{% url 'delete_comment' i.id %}">Delete</a>
+			<a href="{% url 'delete_comment' i.id %}" class="button special">Eliminar</a>
 		</td>
 	</tr>
 
 {% endfor %}
 </table>
 
-<a href="{% url 'create_comment' %}">New comment</a>
+<a href="{% url 'create_comment' %}" class="button special">Agregar Comentario</a>
 
 {% endblock %}

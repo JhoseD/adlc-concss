@@ -1,16 +1,29 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block cont %}
+<table>
+		<thead>
+				<tr> 
+					
+					<th>Titulo</th>
+					<th>Comentario</th>
+					<th>Tarea</th>
+			
+				
+				</tr>
+			</thead>
+
+
 
 <div>
-	<ul>
-    	<li>{{ data.title }}</li>
-		<li>{{ data.comment }} </li>
-		<li>{{ data.task_id }}</li>
-	</ul>
+	<tr>
+    	<td>{{ data.title }}</td>
+		<td>{{ data.comment }} </td>
+		<td>{{ data.task_id }}</td>
+	</tr>
 </div>
 
-<a href="{% url 'update_comment' data.id %}">Edit</a>
-<a href="{% url 'delete_comment' data.id %}">Delete</a>
-
+<a href="{% url 'update_comment' data.id %}" class="button special">Edit</a>
+<a href="{% url 'delete_comment' data.id %}" class="button special">Delete</a>
+</table>
 {% endblock %}

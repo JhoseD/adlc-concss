@@ -1,28 +1,56 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block cont %}
+<h1>ROLES</h1>
+<h2>Proyecto</h2>
+<table >
+		<thead>
+				<tr> 
+					
+					<th>Nombre</th>
+					<th>Porcentaje</th>
+					<th>Archivo</th>
+					<th>Fecha de creacion</th>
+					<th>Nombre del cliente</th>
+				
+				</tr>
+			</thead>
+<tbody>
 
 <div>
-	<ul>
-    	<li>{{ data_.name }}</li>
-		<li>{{ data_.percent }} %</li>
-		<li>{{ data_.file }}</li>
-		<li>{{ data_.created_at }}</li>
-		<li>{{ data_.client_id }}</li>
-	</ul>
+	<tr>
+    	<td>{{ data_.name }}</td>
+		<td>{{ data_.percent }} %</td>
+		<td>{{ data_.file }}</td>
+		<td>{{ data_.created_at }}</td>
+		<td>{{ data_.client_id }}</td>
+	</tr>
 </div>
+</table>
+
+
+
+<h2>Integrante del equipo</h2>
 
 <table border="10">
-{% for i in data %}
+<div>
+	<tr>
+		<th>Rol</th>
+		<th>Integrante</th>
+		<th>Proyecto encargado</th>
+	</tr>
+	{% for i in data %}
 
 	<tr>
 		<td>{{ i.rol }}</td>
 		<td>{{ i.user_id }}</td>
 		<td>{{ i.project_id }}</td>
 		<td>
-			<a href="{% url 'view_rol' i.id %}">View</a>
+			<a href="{% url 'view_rol' i.id %}" class="button small">View</a>
 		</td>
 
+	</div>
+<table>
 {% for r in rol_ %}
 
 	{% if user == r.user_id %}
@@ -66,5 +94,6 @@
 	{% endif %}
 
 {% endfor %}
+</table>
 
 {% endblock %}

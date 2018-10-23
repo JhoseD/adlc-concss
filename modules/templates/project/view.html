@@ -1,31 +1,52 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block cont %}
+
+<h1>Detalle del Proyecto</h1>
+<table>
+<thead>
+		<tr> 
+			
+			<th>Nombre</th>
+			<th>Porcentaje</th>
+			<th>Archivo</th>
+			<th>Fecha creacion</th>
+			<th>cliente</th>
+		
+		</tr>
+	</thead>
+<body>
+	
 
 <div>
-	<ul>
-    	<li>{{ data.name }}</li>
-		<li>{{ data.percent }} %</li>
-		<li>{{ data.file }}</li>
-		<li>{{ data.created_at }}</li>
-		<li>{{ data.client_id }}</li>
-	</ul>
+	<tr>
+		
+    	<td>{{ data.name }}</td>
+		<td>{{ data.percent }} </td>
+		<td>{{ data.file }}</td>
+		<td>{{ data.created_at }}</td>
+		<td>{{ data.client_id }}</td>
+	
+	</tr>
 </div>
+</body>
+</table>
+<h2>Opciones del Proyecto</h2>
+<div>
+	<td>
+<a href="{% url 'create_requirement' %}" class="button alt small">Nuevo Requerimiento</a>
+<a href="{% url 'create_task' %}" class="button alt small">Nueva Tarea</a>
+<a href="{% url 'create_rol' %}" class="button alt small">Nuevo Rol</a>
 
-{% comment %}
-<a href="{% url 'create_requirement' %}">New requirement</a>
-<a href="{% url 'create_task' %}">New task</a>
-<a href="{% url 'create_rol' %}">New rol</a>
-{% endcomment %}
+<a href="{% url 'project_rols' data.id %}" class="button alt small">Roles del Proyecto</a>
+<a href="{% url 'project_tasks' data.id %}" class="button alt small">Tareas del Proyecto</a>
+<a href="{% url 'project_requirements' data.id %}" class="button alt small">Requerimientos del proyecto</a>
 
-<a href="{% url 'project_rols' data.id %}">Project rols</a>
-<a href="{% url 'project_tasks' data.id %}">Project tasks</a>
-<a href="{% url 'project_requirements' data.id %}">Project requirements</a>
 
-<br>
+<a href="{% url 'list_task_not_started' data.id %}" class="button alt small">Tareas del Proyecto No iniciadas</a>
+<a href="{% url 'list_task_in_process' data.id %}" class="button alt small">Tareas del proyecto en proceso</a>
+<a href="{% url 'list_task_finished' data.id %}" class="button alt small">Proyectos de tareas finalizadas</a>
+</td>
 
-<a href="{% url 'list_task_not_started' data.id %}">Project tasks not started</a>
-<a href="{% url 'list_task_in_process' data.id %}">Project tasks in process</a>
-<a href="{% url 'list_task_finished' data.id %}">Project tasks finished</a>
-
+</div>
 {% endblock %}

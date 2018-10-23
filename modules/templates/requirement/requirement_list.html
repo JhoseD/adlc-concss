@@ -1,29 +1,40 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
+{% block cont %}
+
 
 <table border="10">
-{% for i in data %}
 
+<thead>
+		<div>
+			 
+			<th>Titulo</th>
+			<th>Fecha de inicio</th>
+			<th>Fecha de finalizacion</th>
+			<th>Proyecto</th>
+			
+		 </div>
+		</thead>
+		{% for i in data %}
 	<tr>
 		<td>{{ i.title }}</td>
 		<td>{{ i.start_date }}</td>
 		<td>{{ i.end_date }}</td>
 		<td>{{ i.project_id }}</td>
 		<td>
-			<a href="{% url 'view_requirement' i.id %}">View</a>
+			<a href="{% url 'view_requirement' i.id %}" class="button small">View</a>
 		</td>
 		<td>
-			<a href="{% url 'update_requirement' i.id %}">Edit</a>
+			<a href="{% url 'update_requirement' i.id %}" class="button small">Edit</a>
 		</td>
 		<td>
-			<a href="{% url 'delete_requirement' i.id %}">Delete</a>
+			<a href="{% url 'delete_requirement' i.id %}" class="button small">Delete</a>
 		</td>
 	</tr>
 
 {% endfor %}
 </table>
 
-<a href="{% url 'create_requirement' %}">New requirement</a>
+<a href="{% url 'create_requirement' %}" class="button small">Nuevo Requerimiento</a>
 
 {% endblock %}

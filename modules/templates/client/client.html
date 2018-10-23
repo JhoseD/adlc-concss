@@ -1,9 +1,18 @@
-{% extends 'index.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
-<form method="POST">
+{% block cont %}
+<h1>Nuevo cliente</h1>
+<form method="POST" >
 	{% csrf_token %}
+	<center>
+	<div class="form-group" >
+			<div class="4u 10u$(xsmall)">
 	{{ form.as_p }}
 	<input type="submit" name="Save" value="Save">
+	</div>
+	</div>
+</center>
 </form>
+
 {% endblock %}
+ 
